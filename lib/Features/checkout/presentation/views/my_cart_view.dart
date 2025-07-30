@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pay_mint/Features/checkout/presentation/views/payment_details_view.dart';
 import 'package:pay_mint/Features/checkout/presentation/views/widgets/cart_info_item.dart';
+import 'package:pay_mint/Features/checkout/presentation/views/widgets/custom_app_bar.dart';
 import 'package:pay_mint/Features/checkout/presentation/views/widgets/custom_button.dart';
 import 'package:pay_mint/Features/checkout/presentation/views/widgets/total_price_widget.dart';
-
-import '../../../../core/utils/styles.dart';
 
 class MyCartView extends StatelessWidget {
   const MyCartView({super.key});
@@ -11,13 +11,7 @@ class MyCartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: const BackButton(color: Colors.black),
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        centerTitle: true,
-        title: Text('My Cart', style: Styles.style25),
-      ),
+      appBar: buildAppBar(title: 'My Cart'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
@@ -33,7 +27,18 @@ class MyCartView extends StatelessWidget {
             Divider(thickness: 2, color: Color(0xffc7c7c7), height: 34),
             TotalPrice(title: 'Total', value: r'$51.97'),
             const Spacer(),
-            CustomButton(onTap: () {}),
+            CustomButton(
+              text: 'Complete Payment',
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return PaymentDetailsView();
+                    },
+                  ),
+                );
+              },
+            ),
             const SizedBox(height: 50),
           ],
         ),
