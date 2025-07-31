@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pay_mint/Features/checkout/presentation/views/payment_details_view.dart';
 import 'package:pay_mint/Features/checkout/presentation/views/widgets/cart_info_item.dart';
 import 'package:pay_mint/Features/checkout/presentation/views/widgets/custom_app_bar.dart';
 import 'package:pay_mint/Features/checkout/presentation/views/widgets/custom_button.dart';
+import 'package:pay_mint/Features/checkout/presentation/views/widgets/paymentmethod_listview.dart';
 import 'package:pay_mint/Features/checkout/presentation/views/widgets/total_price_widget.dart';
 
 class MyCartView extends StatelessWidget {
@@ -30,18 +30,44 @@ class MyCartView extends StatelessWidget {
             CustomButton(
               text: 'Complete Payment',
               onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return PaymentDetailsView();
-                    },
-                  ),
+                // Navigator.of(context).push(
+                //   MaterialPageRoute(
+                //     builder: (context) {
+                //       return PaymentDetailsView();
+                //     },
+                //   ),
+                // );
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return PaymentMethodsBottomSheet();
+                  },
                 );
               },
             ),
             const SizedBox(height: 50),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class PaymentMethodsBottomSheet extends StatelessWidget {
+  const PaymentMethodsBottomSheet({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        spacing: 32,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(height: 16),
+          PaymentMethodsListView(),
+          CustomButton(onTap: () {}, text: 'Containue'),
+        ],
       ),
     );
   }
