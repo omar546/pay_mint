@@ -1,4 +1,5 @@
-# pay_mint🍃
+
+<img width="250" height="250" alt="paymint" src="https://github.com/user-attachments/assets/2c67ee48-6b1f-4c22-a3db-53557afe8982" />
 
 PayMint is a prototype Flutter application designed to showcase seamless payment integrations with various providers like Stripe, PayPal, and potentially more in the future. This project serves as a demonstration and a learning resource for implementing payment functionalities within a Flutter app.
 
