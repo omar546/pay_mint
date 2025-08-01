@@ -3,8 +3,25 @@ import 'package:pay_mint/Features/checkout/presentation/views/widgets/paymentmet
 
 import 'custom_button_bloc_consumer.dart';
 
-class PaymentMethodsBottomSheet extends StatelessWidget {
+class PaymentMethodsBottomSheet extends StatefulWidget {
   const PaymentMethodsBottomSheet({super.key});
+
+  @override
+  State<PaymentMethodsBottomSheet> createState() =>
+      _PaymentMethodsBottomSheetState();
+}
+
+class _PaymentMethodsBottomSheetState extends State<PaymentMethodsBottomSheet> {
+  bool isPaypal = false;
+
+  updatePaymentMethod({required int index}) {
+    if (index == 0) {
+      isPaypal = false;
+    } else {
+      isPaypal = true;
+    }
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +32,8 @@ class PaymentMethodsBottomSheet extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(height: 16),
-          PaymentMethodsListView(),
-          CustomButtonBlocConsumer(),
+          PaymentMethodsListView(updatePaymentMethod: updatePaymentMethod),
+          CustomButtonBlocConsumer(isPaypal: isPaypal),
         ],
       ),
     );

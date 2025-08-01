@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:pay_mint/Features/checkout/data/models/repo/checkout_repo.dart';
 
 import '../../../../../core/errors/failures.dart';
@@ -17,8 +18,8 @@ class CheckoutRepoImpl extends CheckoutRepo {
         paymentIntentInputModel: paymentIntentInputModel,
       );
       return const Right(null);
-    } catch (e) {
-      return Left(ServerFailure(errMessage: e.toString()));
+    } on StripeException catch (e) {
+      return Left(ServerFailure(errMessage: e.error.message.toString()));
     }
   }
 }

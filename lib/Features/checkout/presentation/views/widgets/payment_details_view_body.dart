@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pay_mint/Features/checkout/presentation/views/thank_you_view.dart';
-import 'package:pay_mint/Features/checkout/presentation/views/widgets/paymentmethod_listview.dart';
 
 import 'custom_button.dart';
 import 'custom_credit_card.dart';
@@ -22,7 +21,7 @@ class _PaymentDetailsViewBodyState extends State<PaymentDetailsViewBody> {
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30),
       child: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(child: PaymentMethodsListView()),
+          // SliverToBoxAdapter(child: PaymentMethodsListView()),
           SliverToBoxAdapter(
             child: CustomCreditCard(
               autoValidateMode: autoValidateMode,
